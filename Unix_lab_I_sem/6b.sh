@@ -1,10 +1,19 @@
-echo "enter the string"
-read str
-length=`expr length $str`
-if [ $length -lt 10 ] 
+#file name which is atleast 1 characters
+
+echo "Enter the directory name"
+read dir
+
+if [ -d $dir ]
 then
-	echo $length
-	echo "String contains less than 10 characters"
+	for i in `ls $dir`
+	do
+		len=`expr length "$i"`
+		if [ $len -ge 10 ] 
+		then
+			echo $i
+		fi
+	done
 else
-	echo "The length of the string:$length"
+	echo "$d is not a directory"
 fi
+
